@@ -1,5 +1,6 @@
 
 const aiCategorisFetch = () => {
+    toggleSpinner(true) 
     const url = `https://openapi.programming-hero.com/api/ai/tools`
     fetch(url)
     .then(res => res.json())
@@ -8,9 +9,11 @@ const aiCategorisFetch = () => {
 
 const showAiCategoris = data => {
     // console.log(data)
+   
     const AiCategorisContainer = document.getElementById('ai-container');
-
-    data.tools.forEach(singleAiCategories => {
+    // items = items.slice(0, 6);
+//   display 6 item only 
+data.tools.forEach(singleAiCategories => {
     const aiDiv = document.createElement('div');
     aiDiv.classList.add('col');
     aiDiv.innerHTML = `
@@ -25,8 +28,8 @@ const showAiCategoris = data => {
                          </ol> 
                          <hr>
                         <div class="d-flex justify-content-between ">
-                            <div> <h5 class="card-title">Card title</h5>
-                                <i class="fa-solid fa-calendar-week"></i> <span>date</span></div>
+                            <div> <h5 class="card-title">${singleAiCategories.name ? singleAiCategories.name: 'No data Found'}</h5>
+                                <i class="fa-solid fa-calendar-week text-secondary"></i> <span class="text-secondary">${singleAiCategories.published_in ? singleAiCategories.published_in: 'No data Found'}</span></div>
                             <div class="d-flex justify-content-center">
                               <span class="bg-warning-subtle p-3" style="clip-path: circle(40%); "><i class="fa-solid fa-arrow-right"></i></span>
                             </div>
@@ -35,7 +38,16 @@ const showAiCategoris = data => {
                   </div>
     `
     AiCategorisContainer.appendChild(aiDiv);
-       
+    toggleSpinner(false) 
     })
+}
+const toggleSpinner = isLoding => {
+    const loaderSection = document.getElementById('loder');
+    if(isLoding){
+        loaderSection.classList.remove('d-none')
+    }
+    else{
+        loaderSection.classList.add('d-none');
+    }
 }
 aiCategorisFetch()
