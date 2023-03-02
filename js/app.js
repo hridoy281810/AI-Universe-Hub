@@ -9,10 +9,18 @@ const aiCategorisFetch = () => {
 
 const showAiCategoris = data => {
     // console.log(data)
-   
     const AiCategorisContainer = document.getElementById('ai-container');
     // items = items.slice(0, 6);
 //   display 6 item only 
+// const showAll = document.getElementById('ahow-all');
+// if(data.length > 6){
+//       data = data.slice(0, 6);
+//     showAll.classList.remove('d-none')
+//   }
+//   else{
+//     showAll.classList.add('d-none');
+// }
+
 data.tools.forEach(singleAiCategories => {
     const aiDiv = document.createElement('div');
     aiDiv.classList.add('col');
@@ -41,6 +49,8 @@ data.tools.forEach(singleAiCategories => {
     toggleSpinner(false) 
     })
 }
+
+// spiner 
 const toggleSpinner = isLoding => {
     const loaderSection = document.getElementById('loder');
     if(isLoding){
@@ -50,4 +60,5 @@ const toggleSpinner = isLoding => {
         loaderSection.classList.add('d-none');
     }
 }
+
 aiCategorisFetch()
