@@ -1,15 +1,20 @@
 // all data fetch 
+let fecthData = [];
+// console.log(fecthData)
 const aiCategorisFetch = () => {
     toggleSpinner(true) 
     const url = `https://openapi.programming-hero.com/api/ai/tools`
     fetch(url)
     .then(res => res.json())
-    .then(data => showAiCategoris(data.data))
+    .then(data => {
+      fecthData = data.data;
+      showAiCategoris(data.data)
+    })
 }
 
 // show categories start 
-const showAiCategoris = data => {
-    // console.log(data.tools.length)
+const showAiCategoris =( data) => {
+    console.log(data.tools.length)
     const AiCategorisContainer = document.getElementById('ai-container');
     // display 6 item only 
     const showAll = document.getElementById('ahow-all');
@@ -110,7 +115,7 @@ const displayAiDetails = data => {
     <div class="col">
       <div class="card p-3">
         <img src="${data.image_link[0] ? data.image_link[0]: 'No Image'}" class="card-img-top img-fluid" " alt="...">
-        <span class="new-badge badge text-bg-danger ">${data.accuracy.score ? data.accuracy.score: ''}</span>
+        <span class="new-badge badge text-bg-danger ">${data.accuracy.score  ? data.accuracy.score +'%' + ' accuracy': ''}</span>
         <div class="card-body text-center " >
           <h5 class="card-title">${data.input_output_examples[0].input ? data.input_output_examples[0].input: 'Can you give any example?'}</h5>
           <p class="card-text">${data.input_output_examples[0].output.slice(0,100) ? data.input_output_examples[0].output.slice(0,100): 'No! Not Yet! Take a break!!!'}</p>
@@ -170,6 +175,24 @@ data.tools.forEach(singleAiCategories => {
     aiCategorisBtn()
    })
 
-// ............
+// data shorting by date start 
+const shorting = (a, b) => {
+  const dateA = new Date(a.published_in);
+  const dateB = new Date(b.published_in);
+  if(dateA> dateB){
+    return 1;
+  }
+  else if(dateA < dateB){
+      return -1;
+  }
+  else{
+    return 0;
+  }
+}
+
+document.getElementById('btn-Sortby').addEventListener('click', function(){
+  console.log(fecthData.sort(shorting));
+  showAiCategoris(fecthData.sort(shorting))
+})
 
 aiCategorisFetch()
