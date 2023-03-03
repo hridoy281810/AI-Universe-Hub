@@ -1,4 +1,4 @@
-
+// all data fetch 
 const aiCategorisFetch = () => {
     toggleSpinner(true) 
     const url = `https://openapi.programming-hero.com/api/ai/tools`
@@ -7,8 +7,9 @@ const aiCategorisFetch = () => {
     .then(data => showAiCategoris(data.data))
 }
 
+// show categories start 
 const showAiCategoris = data => {
-    console.log(data.tools.length)
+    // console.log(data.tools.length)
     const AiCategorisContainer = document.getElementById('ai-container');
     // display 6 item only 
     const showAll = document.getElementById('ahow-all');
@@ -48,8 +49,9 @@ data.tools.forEach(singleAiCategories => {
     toggleSpinner(false) 
     })
 }
+// show categories end
 
-// spiner 
+// spiner loader start
 const toggleSpinner = isLoding => {
     const loaderSection = document.getElementById('loder');
     if(isLoding){
@@ -59,7 +61,8 @@ const toggleSpinner = isLoding => {
         loaderSection.classList.add('d-none');
     }
 }
-
+// spiner loader end
+// modal data fecth start
 const aiDetailsById = id =>{
     const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`
     fetch(url)
@@ -67,6 +70,8 @@ const aiDetailsById = id =>{
     .then(data =>displayAiDetails(data.data) )
 
 }
+// modal data fecth end
+// dymnamic modal start 
 const displayAiDetails = data => {
     console.log(data)
     const aiDetails = document.getElementById('modal-body');
@@ -114,7 +119,8 @@ const displayAiDetails = data => {
   </div>
     `
    } 
-
+// dymnamic modal end
+// see all button data fetch start 
    const aiCategorisBtn = () => {
     toggleSpinner(true) 
     const url = `https://openapi.programming-hero.com/api/ai/tools`
@@ -122,7 +128,9 @@ const displayAiDetails = data => {
     .then(res => res.json())
     .then(data => showAiCategoris2(data.data))
 }
+// see all button data fetch end
 
+// see all button data show start
 const showAiCategoris2 = data => {
   console.log(data.tools.length)
   const AiCategorisContainer = document.getElementById('ai-container');
@@ -155,8 +163,12 @@ data.tools.forEach(singleAiCategories => {
   toggleSpinner(false) 
   })
 }
-   document.getElementById('btn-showall').addEventListener('click', function(){
-    
+// see all button data show end
+// see all button addEventListener 
+   document.getElementById('btn-showall').addEventListener('click', function(){ 
     aiCategorisBtn()
    })
+
+// ............
+
 aiCategorisFetch()
