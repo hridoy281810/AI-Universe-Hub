@@ -28,10 +28,10 @@ const showAiCategoris =( data) => {
 
 data.tools.forEach(singleAiCategories => {
     const aiDiv = document.createElement('div');
-    aiDiv.classList.add('col');
+    aiDiv.classList.add('col','images');
     aiDiv.innerHTML = `
      <div class="card h-100">
-                    <img src="${singleAiCategories.image ? singleAiCategories.image: 'No Img Found'}" class="card-img-top p-2 " alt="..." style="width: 355px; height: 200px;">
+                    <img src="${singleAiCategories.image ? singleAiCategories.image: 'No Img Found'}" class="card-img-top p-2 " alt="...">
                     <div class="card-body">
                       <h5 class="card-title">Features</h5>
                          <ol>
@@ -86,12 +86,12 @@ const displayAiDetails = data => {
       <div class="card">
         <div class="card-body bg-danger-subtle rounded p-3" style="border: 1px solid rgba(235, 87, 87, 1);">
           <h5 class="card-title fw-bold mb-4">${data.description}</h5>
-          <div class="d-flex gap-3 rounded mb-4">
+          <div class="price d-flex gap-3 rounded mb-4">
             <h6 class="p-4 fw-semibold rounded bg-white bg-white text-success">${data.pricing[0].price ? data.pricing[0].price: 'Free of Cost/Basic' } Basic</h6>
            <h6 class="p-4 fw-semibold rounded bg-white text-info text-center">${data.pricing[1].price ? data.pricing[1].price: 'Free Of Cost/Pro' } Pro</h6>
             <h6 class="p-4 fw-semibold rounded bg-white text-danger text-center ">${data.pricing[2].price ? data.pricing[2].price: 'Free of Cost /Enterprise' } Enterprise</h6>
           </div>
-        <div class="d-flex justify-content-between">
+        <div class="feature_name d-flex justify-content-between">
           <div>
             <h5 class="card-title fw-semibold mb-2">Features</h5>
             <ul>
@@ -175,7 +175,8 @@ data.tools.forEach(singleAiCategories => {
     aiCategorisBtn()
    })
 
-// data shorting by date start 
+
+
 const shorting = (a, b) => {
   const dateA = new Date(a.published_in);
   const dateB = new Date(b.published_in);

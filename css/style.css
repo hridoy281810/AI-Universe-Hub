@@ -1,4 +1,6 @@
-.col img{
+.images img{
+    width: 355px;
+    height:200px ;
     border-radius:16px ;
    }
    .new-badge{
@@ -17,10 +19,17 @@ z-index: 1;
 top: -33px;
 right: -51px;
 }
-
-
-
-
+/* responsive start  */
 @media screen and (max-width:576px){
-
+    .images img {
+        width: 294px;
+        height: 162px;
+    }
+    #modal-container .btn-close {
+        top: 2px;
+        right: -14px;
+    }
+    .price,.feature_name{
+        flex-direction: column;
+    }
 }
