@@ -11,12 +11,28 @@
         .col img{
          border-radius:16px ;
         }
+        .new-badge{
+           position: absolute;
+           top:30px;
+           right: 30px;
+          
+        }
+        #modal-container .btn-close {
+    background-color: red;
+    width: 54px;
+    padding: 20px;
+    clip-path: circle(30%);
+    position: absolute;
+    z-index: 1;
+    top: -33px;
+    right: -51px;
+}
     </style>
 </head>
   <body class="container">
     <!-- header section start  -->
     <header>
-      <h1 class="text-center mt-4">AI Universe Hub </h1>
+      <h1  class="text-center mt-4">AI Universe Hub </h1>
       <!-- Sort By Date button start  -->
       <div class="text-center my-3 ">
         <div id="btn-Sortby" class="btn btn-danger px-3 py2 fs-5 fw-semibold ">Sort By Date</div>
@@ -36,20 +52,22 @@
         </section>
         <!-- loader section end-->
         <!-- See More button start -->
-        <section >
-            <div id="ai-container" class="row row-cols-1 row-cols-md-3 g-4">
+        <section>
+          <!-- ai container start    -->
+          <div id="ai-container" class="row row-cols-1 row-cols-md-3 g-4">
             </div>
+             <!-- ai container end -->
               <div id="ahow-all" class="text-center my-3 d-none">
                 <div id="btn-showall" class="btn btn-danger px-3 py2 fs-5 fw-semibold ">See More</div>
               </div>
         </section>
  <!-- See More button end -->
        <!-- modal section start  -->
-      <section>
+      <section id="modal-container">
         <div class="modal fade " id="aiDetailModal" tabindex="-1" aria-labelledby="aiDetailModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-xl">
             <div class="modal-content">
-              <div class="modal-header">
+              <div class="">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div id="modal-body" class="modal-body">   

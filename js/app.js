@@ -79,7 +79,7 @@ const displayAiDetails = data => {
     <div class="row row-cols-1 row-cols-md-2 g-4">          
     <div class="col">
       <div class="card">
-        <div class="card-body bg-danger-subtle  p-3">
+        <div class="card-body bg-danger-subtle rounded p-3" style="border: 1px solid rgba(235, 87, 87, 1);">
           <h5 class="card-title fw-bold mb-4">${data.description}</h5>
           <div class="d-flex gap-3 rounded mb-4">
             <h6 class="p-4 fw-semibold rounded bg-white bg-white text-success">${data.pricing[0].price ? data.pricing[0].price: 'Free of Cost/Basic' } Basic</h6>
@@ -110,7 +110,8 @@ const displayAiDetails = data => {
     <div class="col">
       <div class="card p-3">
         <img src="${data.image_link[0] ? data.image_link[0]: 'No Image'}" class="card-img-top img-fluid" " alt="...">
-        <div class="card-body text-center">
+        <span class="new-badge badge text-bg-danger ">${data.accuracy.score ? data.accuracy.score: ''}</span>
+        <div class="card-body text-center " >
           <h5 class="card-title">${data.input_output_examples[0].input ? data.input_output_examples[0].input: 'Can you give any example?'}</h5>
           <p class="card-text">${data.input_output_examples[0].output.slice(0,100) ? data.input_output_examples[0].output.slice(0,100): 'No! Not Yet! Take a break!!!'}</p>
         </div>
