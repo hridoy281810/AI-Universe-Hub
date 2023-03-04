@@ -24,6 +24,7 @@ right: -51px;
     .images img {
         width: 294px;
         height: 162px;
+        border-radius:10px ;
     }
     #modal-container .btn-close {
         top: 2px;
